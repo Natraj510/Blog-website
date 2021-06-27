@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(180, 70, 79);
+}
+
+h1{
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-size: 3em;
+}
+
+img{
+    max-height: 170px;
+    min-width: 349px;
+}
+
+.blog-posts{
+    margin-top: 70px
+}
+
+i{
+    padding-right: 10px;
+}
+
+button{
+    margin-top: 40px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}

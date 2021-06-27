@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Blog</title>
+</head>
+<body>
+    <div class="blog-heading">
+        <h1><i>Blogs</i></h1>
+    </div>
+
+    <div class="create-btn">
+        <form action="/blog/new" class="text-center" method="get">
+            <button class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i>Create new</button>
+        </form>
+    </div>
+    
+    <section class="blog-posts">
+        <div class="container">
+            <div class="row">
+                <% blogs.forEach(blog =>{%>
+                  <div class="col-md-4" style="padding: 20px;">
+                    <div class="card" >
+                      <img class="card-img-top" style="min-width: 10px;" src="../img/background.png" alt="Card image cap">
+                      <div class="card-body">
+                        <div class="d-flex" style="justify-content: flex-end";>
+                          <h5 class="card-title" style="margin-right: auto";><%=blog.title%></h5>
+                          <div class="btn-group" style="margin-top: -40px";>
+                            <button type="button" style="border: none;background-color: white; " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="/blog/edit/<%=blog.id%>">Edit</a>
+                              <form action="/blog/delete/<%=blog.id%>?_method=DELETE" method="POST" style="height: 30px;">
+                                <button style="margin-top: -10px; border: none; background-color: white; margin-left: 17px;">Delete</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="card-text"><%=blog.author%></p>
+                        <p class="card-text"><%=blog.createdOn%></p>
+                        <a href="/blog/<%=blog.id%>" class="btn btn-primary" style="padding: 5px 30px;">Read</a>
+                      </div>
+                    </div>
+                  </div>
+
+                <%}) %>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
